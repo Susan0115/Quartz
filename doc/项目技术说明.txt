@@ -1,0 +1,37 @@
+项目jar包说明
+Spring-4.0.5
+Quartz-2.2.0
+
+
+quartz存储job方式就分三种，我们最常用的也是quartz默认的是RAMJobStore，
+RAMJobStore顾名思义就是把job的相关信息存储在内存里，
+如果用spring配置quartz的job信息的话，所有信息是配置在xml里，
+当spirng context启动的时候就把xml里的job信息装入内存。
+这一性质就决定了一旦JVM挂掉或者容器挂掉，内存中的job信息就随之消失，无法持久化。
+另外两种方式是JobStoreTX和JobStoreCMT，暂时不讨论这两者的区别，
+使用这两种JobStore，quartz就会通过jdbc直连或者应用服务器jndi连接数据库，
+读取配置在数据库里的job初始化信息，并且把job通过java序列化到数据库里，
+这样就使得每个job信息得到了持久化，即使在jvm或者容器挂掉的情况下，也能通过数据库感知到其他job的状态和信息。 
+
+
+
+
+
+
+
+Job是一个接口，只有一个方法void execute(JobExecutionContext context)
+
+Trigger：是一个类，描述触发Job执行的时间触发规则。
+主要有SimpleTrigger和CronTrigger这两个子类。
+当仅需触 发一次或者以固定时间间隔周期执行，SimpleTrigger是最适合的选择；
+而CronTrigger则可以通过Cron表达式定义出各种复杂时间规 则的调度方案：
+如每早晨9:00执行，周一、周三、周五下午5:00执行等
+
+
+
+
+
+
+无状态的Job可以并发执行，
+而有状态的StatefulJob不能并发执行，
+因此除非必要，应该尽量 使用无状态的Job

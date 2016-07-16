@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="SpringQuartz"
+  id="myeclipse.1447727682111"
+  context-root="/SpringQuartz"
+  j2ee-spec="6.0"
+  archive="SpringQuartz.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebRoot" />
+  </attributes>
+</project-module>
+

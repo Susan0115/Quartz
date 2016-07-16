@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//doc/oracle.sql=UTF-8
+encoding//doc/\u9879\u76EE\u6280\u672F\u8BF4\u660E.txt=US-ASCII
+encoding//src/com/nantian/ecm/usdm/quartz/domain/ScheduleJob.java=UTF-8
+encoding//src/com/nantian/ecm/usdm/quartz/service/impl/SchedulerServiceImpl.java=UTF-8
+encoding//src/quartz.properties=UTF-8
+encoding//test/com/nantian/ecm/usdm/quartz/data/TestData.java=UTF-8
+encoding//test/com/nantian/ecm/usdm/quartz/service/impl/MainTest.java=UTF-8
+encoding/<project>=UTF-8

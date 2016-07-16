@@ -1,0 +1,57 @@
+package com.nantian.ecm.usdm.quartz.service.impl;
+
+//import static org.quartz.JobBuilder.newJob;
+import static org.quartz.JobBuilder.newJob;
+import static org.quartz.TriggerBuilder.newTrigger;
+
+import java.util.Date;
+
+import org.quartz.JobDetail;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
+import org.quartz.SchedulerFactory;
+import org.quartz.Trigger;
+import org.quartz.impl.StdSchedulerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.nantian.ecm.usdm.quartz.service.SchedulerService;
+import com.nantian.ecm.usdm.quartz.service.SimpleJob;
+import com.nantian.ecm.usdm.quartz.utils.DateUtils;
+
+
+/**
+ *@author Tanjiao
+ *@date 2015-11-24锟斤拷锟斤拷09:58:45
+ *@version 1.0
+ */
+public class MainTest {
+	
+	private static final Logger logger = LoggerFactory.getLogger(MainTest.class); 
+	
+	public static void main(String[] args) throws SchedulerException {
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");  
+		
+		SchedulerServiceImpl schedulerService = context.getBean("schedulerService", SchedulerServiceImpl.class);
+		
+		Date startTime = DateUtils.parse("2015-11-27 16:30:00");
+		Date endTime = DateUtils.parse("2015-11-27 16:35:00");
+		
+		
+		//每10'' 执行一次job
+		schedulerService.schedule("0/10 * * * * ?");
+	
+		schedulerService.schedule(startTime);
+
+		schedulerService.schedule(startTime, endTime);
+	
+		schedulerService.schedule(startTime, 5);
+
+		
+		
+	}
+
+}
